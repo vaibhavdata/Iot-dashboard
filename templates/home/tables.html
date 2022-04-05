@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Product Detail Pages {% endblock title %}
+
+
+{% block content %}
+
+<div class="container-fluid py-4">
+  <div>
+    <div class="main">
+      {% for device in single_device %}
+      <div class="inner-main">
+        <div class="second-inner">
+          <p>Device</p>
+          <h5>{{device.name}}</h5>
+        </div>
+        <div class="buttt">
+          <div class="button-remove">
+            <a class="robust-button" href="{% url 'delete_device' device.slug  %}" class="btn btn"> Remove </a>
+          </div>
+          
+        </div>
+
+      </div>
+
+      <div class="inner-main">
+        <div class="second-inner">
+          <p>STATUS</p>
+          <h5><i class="fa fa-check-circle" aria-hidden="true"></i>{{device.status}}</h5>
+        </div>
+        <div class="second-inner">
+          <p>UUID</p>
+          <h5>{{device.uuid}}</h5>
+        </div>
+        <div class="second-inner">
+          <p>Type</p>
+          <h5><img src="{{ device.image.url }}" alt="" width="50" height="50">{{device.device_type}}</h5>
+        </div>
+      </div>
+
+      <div class="inner-main">
+        <div class="second-inner">
+          <p>Last Login</p>
+          <h5>{{device.last_login}}</h5>
+        </div>
+        <div class="second-inner">
+          <p>Host Os Version</p>
+          <h5>{{device.host_version}}</h5>
+        </div>
+        <div class="second-inner">
+          <p>SUPERVISOR VERSION</p>
+          <h5>Online</h5>
+        </div>
+
+      </div>
+
+
+      <div class="inner-main">
+        <div class="second-inner">
+          <p>RELEASE</p>
+          <h5>{{device.current_release}}</h5>
+        </div>
+        <div class="second-inner">
+          <p>IP ADDRESS</p>
+          <h5>{{device.ip_address}}<i class="fa fa-file" aria-hidden="true"></i></h5>
+        </div>
+        <div class="second-inner">
+          <p>PUBLIC DEVICE URL</p>
+          <h5><i class="fa fa-toggle-on" aria-hidden="true"></i></h5>
+        </div>
+      </div>
+      <div class="inner-main">
+        <div class="second-inner">
+          <p>Notes</p>
+          <textarea name="notes" id="notes" cols="110" rows="2">{{device.notes}}</textarea>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="hadinngg">
+      <h6>Service</h6>
+    </div>
+    <div class="col-12">
+      <div class="card mb-4">
+
+        <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Service</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Relese</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for service in service %}
+                <tr>
+                  <td>
+                    <p class="bgc text-xs text-secondary mb-0">{{service.service}}</p>
+                  </td>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                      {{service.status}}</p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"><i class="fa-solid fa-files"></i>{{service.release}}</p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"></p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"></p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"></p>
+                  </td>
+
+                </tr>
+                {% endfor %}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+{% endblock content %}
